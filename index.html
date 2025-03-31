@@ -440,212 +440,123 @@
       background-color: var(--secondary);
     }
 
-    /* GitHub Section */
-    .search-form {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
+    /* Featured Projects Section */
+    .featured-projects {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
     }
 
-    .input {
-      flex: 1;
-      padding: 0.5rem 1rem;
-      border: 1px solid var(--input);
-      border-radius: var(--radius);
-      background-color: var(--background);
-      color: var(--foreground);
-    }
-
-    .repo-screenshot {
-      position: relative;
-      height: 300px;
-      width: 100%;
-      background-color: #f1f5f9;
-      overflow: hidden;
-      margin-bottom: 1rem;
-    }
-
-    .dark .repo-screenshot {
-      background-color: #1e293b;
-    }
-
-    .repo-screenshot img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .repo-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-      padding: 1rem;
-    }
-
-    .repo-overlay h3 {
-      color: white;
+    .featured-title {
+      font-size: 1.5rem;
       font-weight: bold;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, var(--purple-600), var(--blue-600));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
-    .repo-overlay p {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 0.875rem;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .repo-grid {
+    .featured-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1rem;
+      gap: 1.5rem;
     }
 
     @media (min-width: 768px) {
-      .repo-grid {
-        grid-template-columns: repeat(3, 1fr);
+      .featured-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    .repo-card {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
-      border: 1px solid var(--border);
+    .featured-project {
       border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background-color: var(--card);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .featured-project:hover {
+      transform: translateY(-0.25rem);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .dark .featured-project:hover {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+    }
+
+    .project-image {
+      height: 200px;
+      width: 100%;
+      position: relative;
       overflow: hidden;
     }
 
-    .repo-card:hover {
-      transform: translateY(-0.25rem);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
     }
 
-    .dark .repo-card:hover {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    .featured-project:hover .project-image img {
+      transform: scale(1.05);
     }
 
-    .repo-card.active {
-      border: 2px solid var(--primary);
+    .project-content {
+      padding: 1.25rem;
     }
 
-    .repo-header {
-      padding: 1rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .repo-title {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
+    .project-title {
+      font-size: 1.25rem;
+      font-weight: bold;
       margin-bottom: 0.5rem;
-    }
-
-    .repo-name {
-      font-size: 1.125rem;
-      font-weight: 500;
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
 
-    .repo-language {
-      display: flex;
-      align-items: center;
-      gap: 0.375rem;
-      font-size: 0.75rem;
+    .project-description {
       color: var(--muted-foreground);
-    }
-
-    .language-dot {
-      width: 0.75rem;
-      height: 0.75rem;
-      border-radius: 50%;
-    }
-
-    .repo-description {
       font-size: 0.875rem;
-      color: var(--muted-foreground);
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      height: 2.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
     }
 
-    .repo-content {
-      padding: 1rem;
-      flex-grow: 1;
-    }
-
-    .repo-stats {
+    .project-tech {
       display: flex;
-      align-items: center;
-      gap: 1rem;
-      font-size: 0.875rem;
-      color: var(--muted-foreground);
-    }
-
-    .repo-stat {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-    }
-
-    .repo-updated {
-      font-size: 0.75rem;
-      color: var(--muted-foreground);
-      margin-top: 0.5rem;
-    }
-
-    .repo-footer {
-      padding: 0.75rem 1rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .empty-state {
-      text-align: center;
-      padding: 2rem;
-    }
-
-    .empty-state i {
-      font-size: 3rem;
-      color: var(--muted-foreground);
+      flex-wrap: wrap;
+      gap: 0.5rem;
       margin-bottom: 1rem;
     }
 
-    .empty-state h3 {
-      font-size: 1.25rem;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
+    .tech-tag {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 9999px;
+      background-color: var(--secondary);
+      color: var(--muted);
     }
 
-    .empty-state p {
-      color: var(--muted-foreground);
+    .project-links {
+      display: flex;
+      gap: 0.75rem;
     }
 
-    .loading {
-      display: none;
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.2s;
     }
 
-    .loading-skeleton {
-      background: linear-gradient(90deg, var(--secondary) 25%, var(--muted) 50%, var(--secondary) 75%);
-      background-size: 200% 100%;
-      animation: loading 1.5s infinite;
-      border-radius: var(--radius);
-    }
-
-    @keyframes loading {
-      0% {
-        background-position: 200% 0;
-      }
-      100% {
-        background-position: -200% 0;
-      }
+    .project-link:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
     }
 
     .theme-toggle {
@@ -840,56 +751,145 @@
       <div class="tab-content" id="github">
         <div class="card">
           <div class="card-content">
-            <h2 class="section-title">My GitHub Repositories</h2>
+            <h2 class="section-title">My GitHub Projects</h2>
             
-            <form id="githubForm" class="search-form">
-              <input type="text" id="usernameInput" class="input" placeholder="Tanmay-hue" value="">
-              <button type="submit" class="btn btn-primary">
-                <i class="fas fa-search"></i>
-                Search
-              </button>
-            </form>
-
-            <div id="errorMessage" class="error-message" style="display: none; padding: 1rem; background-color: #fee2e2; color: #b91c1c; border-radius: var(--radius); margin-bottom: 1rem;"></div>
-
-            <!-- Loading State -->
-            <div id="loading" class="loading">
-              <div class="loading-skeleton" style="height: 300px; width: 100%; margin-bottom: 1rem;"></div>
-              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
-                <div class="loading-skeleton" style="height: 150px;"></div>
-                <div class="loading-skeleton" style="height: 150px;"></div>
-                <div class="loading-skeleton" style="height: 150px;"></div>
-              </div>
-            </div>
-
-            <!-- Repository Display -->
-            <div id="repoDisplay">
-              <!-- Repository Screenshot -->
-              <div id="repoScreenshot" class="repo-screenshot" style="display: none;">
-                <img id="screenshotImg" src="/placeholder.svg" alt="Repository Screenshot">
-                <div class="repo-overlay">
-                  <h3 id="screenshotTitle"></h3>
-                  <p id="screenshotDesc"></p>
+            <!-- FEATURED PROJECTS SECTION - ADD YOUR PROJECTS HERE -->
+            <div class="featured-projects">
+              <div class="featured-grid">
+                <!-- PROJECT 1: EDIT THIS SECTION -->
+                <div class="featured-project">
+                  <div class="project-image">
+                    <!-- ADD YOUR PROJECT 1 SCREENSHOT HERE -->
+                    <img src="https://placehold.co/800x400?text=Project+1+Screenshot" alt="Project 1 Screenshot">
+                  </div>
+                  <div class="project-content">
+                    <h4 class="project-title">
+                      <i class="fab fa-github"></i>
+                      Streamlit_Dashboard
+                    </h4>
+                    <p class="project-description">
+                      Description of your first project. Explain what it does, the technologies used, and any notable features.
+                    </p>
+                    <div class="project-tech">
+                      <span class="tech-tag">Python</span>
+                      <span class="tech-tag">Streamlit</span>
+                      <span class="tech-tag">Docker</span>
+                    </div>
+                    <div class="project-links">
+                      <!-- ADD YOUR PROJECT 1 GITHUB LINK HERE -->
+                      <a href="https://github.com/Tanmay-hue/Streamlit_Dashboard.git" target="_blank" rel="noopener noreferrer" class="project-link">
+                        <i class="fab fa-github"></i>
+                        View Code
+                      </a>
+                      <!-- ADD YOUR PROJECT 1 LIVE DEMO LINK HERE (OPTIONAL) -->
+                      <a href="https://appdashboard-xrreoqwh5ghw6vu9zmdrfi.streamlit.app/" target="_blank" rel="noopener noreferrer" class="project-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        Live Demo
+                      </a>
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              <!-- Repository Grid -->
-              <div id="repoGrid" class="repo-grid"></div>
+                <!-- PROJECT 2: EDIT THIS SECTION -->
+                <div class="featured-project">
+                  <div class="project-image">
+                    <!-- ADD YOUR PROJECT 2 SCREENSHOT HERE -->
+                    <img src="https://placehold.co/800x400?text=Project+2+Screenshot" alt="Project 2 Screenshot">
+                  </div>
+                  <div class="project-content">
+                    <h4 class="project-title">
+                      <i class="fab fa-github"></i>
+                      Streamlit_Titanic_Survival
+                    </h4>
+                    <p class="project-description">
+                      Description of your second project. Explain what it does, the technologies used, and any notable features.
+                    </p>
+                    <div class="project-tech">
+                      <span class="tech-tag">Python</span>
+                      <span class="tech-tag">Docker</span>
+                      <span class="tech-tag">Streamlit</span>
+                    </div>
+                    <div class="project-links">
+                      <!-- ADD YOUR PROJECT 2 GITHUB LINK HERE -->
+                      <a href="https://github.com/Tanmay-hue/Streamlit_Titanic_Survival.git" target="_blank" rel="noopener noreferrer" class="project-link">
+                        <i class="fab fa-github"></i>
+                        View Code
+                      </a>
+                      <!-- ADD YOUR PROJECT 2 LIVE DEMO LINK HERE (OPTIONAL) -->
+                      <a href="https://apptitanicsurvival-nmqbqpkaptgb6q8vmplcfb.streamlit.app/" target="_blank" rel="noopener noreferrer" class="project-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        Live Demo
+                      </a>
+                    </div>
+                  </div>
+                </div>
 
-              <!-- Empty State -->
-              <div id="emptyState" class="empty-state">
-                <i class="fab fa-github"></i>
-                <h3>Connect Your GitHub</h3>
-                <p>Enter your GitHub username to display your repositories and screenshots here.</p>
-                <div style="background-color: rgba(0, 0, 0, 0.05); padding: 1rem; border-radius: var(--radius); max-width: 28rem; margin: 1rem auto; text-align: left;">
-                  <h4 style="font-weight: 500; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                    <i class="fas fa-image"></i>
-                    Repository Screenshots
-                  </h4>
-                  <p style="font-size: 0.875rem; color: var(--muted-foreground);">
-                    Once you connect your GitHub account, this section will display screenshots of your repositories. You can
-                    upload custom screenshots for each repository to showcase your work.
-                  </p>
+                <!-- PROJECT 3: EDIT THIS SECTION -->
+                <div class="featured-project">
+                  <div class="project-image">
+                    <!-- ADD YOUR PROJECT 3 SCREENSHOT HERE -->
+                    <img src="https://placehold.co/800x400?text=Project+3+Screenshot" alt="Project 3 Screenshot">
+                  </div>
+                  <div class="project-content">
+                    <h4 class="project-title">
+                      <i class="fab fa-github"></i>
+                      Streamlit_Binary_Classification
+                    </h4>
+                    <p class="project-description">
+                      Description of your third project. Explain what it does, the technologies used, and any notable features.
+                    </p>
+                    <div class="project-tech">
+                      <span class="tech-tag">Python</span>
+                      <span class="tech-tag">Docker</span>
+                      <span class="tech-tag">Streamlit</span>
+                    </div>
+                    <div class="project-links">
+                      <!-- ADD YOUR PROJECT 3 GITHUB LINK HERE -->
+                      <a href="https://github.com/Tanmay-hue/Streamlit_Binary_Classification.git" target="_blank" rel="noopener noreferrer" class="project-link">
+                        <i class="fab fa-github"></i>
+                        View Code
+                      </a>
+                      <!-- ADD YOUR PROJECT 3 LIVE DEMO LINK HERE (OPTIONAL) -->
+                      <a href="https://appbinaryclassification-s66skuerlsbsvvcwejlu7p.streamlit.app/" target="_blank" rel="noopener noreferrer" class="project-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        Live Demo
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- PROJECT 4: EDIT THIS SECTION -->
+                <div class="featured-project">
+                  <div class="project-image">
+                    <!-- ADD YOUR PROJECT 4 SCREENSHOT HERE -->
+                    <img src="https://placehold.co/800x400?text=Project+4+Screenshot" alt="Project 4 Screenshot">
+                  </div>
+                  <div class="project-content">
+                    <h4 class="project-title">
+                      <i class="fab fa-github"></i>
+                      Project Name 4
+                    </h4>
+                    <p class="project-description">
+                      Description of your fourth project. Explain what it does, the technologies used, and any notable features.
+                    </p>
+                    <div class="project-tech">
+                      <span class="tech-tag">React Native</span>
+                      <span class="tech-tag">Firebase</span>
+                      <span class="tech-tag">Redux</span>
+                    </div>
+                    <div class="project-links">
+                      <!-- ADD YOUR PROJECT 4 GITHUB LINK HERE -->
+                      <a href="https://github.com/yourusername/project4" target="_blank" rel="noopener noreferrer" class="project-link">
+                        <i class="fab fa-github"></i>
+                        View Code
+                      </a>
+                      <!-- ADD YOUR PROJECT 4 LIVE DEMO LINK HERE (OPTIONAL) -->
+                      <a href="https://project4-demo.com" target="_blank" rel="noopener noreferrer" class="project-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        Live Demo
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -948,185 +948,6 @@
         document.getElementById(tabId).classList.add('active');
       });
     });
-
-    // GitHub Repositories
-    const githubForm = document.getElementById('githubForm');
-    const usernameInput = document.getElementById('usernameInput');
-    const errorMessage = document.getElementById('errorMessage');
-    const loading = document.getElementById('loading');
-    const repoDisplay = document.getElementById('repoDisplay');
-    const repoScreenshot = document.getElementById('repoScreenshot');
-    const screenshotImg = document.getElementById('screenshotImg');
-    const screenshotTitle = document.getElementById('screenshotTitle');
-    const screenshotDesc = document.getElementById('screenshotDesc');
-    const repoGrid = document.getElementById('repoGrid');
-    const emptyState = document.getElementById('emptyState');
-    
-    let repos = [];
-    let selectedRepo = null;
-
-    githubForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const username = usernameInput.value.trim();
-      
-      if (username) {
-        fetchRepos(username);
-      }
-    });
-
-    async function fetchRepos(username) {
-      // Show loading state
-      errorMessage.style.display = 'none';
-      loading.style.display = 'block';
-      repoScreenshot.style.display = 'none';
-      repoGrid.innerHTML = '';
-      emptyState.style.display = 'none';
-      
-      try {
-        const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`);
-        
-        if (!response.ok) {
-          throw new Error(`GitHub API error: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        
-        // Add placeholder screenshots for demo purposes
-        repos = data.map((repo, index) => ({
-          ...repo,
-          screenshot: `https://placehold.co/800x600?text=Repository+Screenshot+${index + 1}`
-        }));
-        
-        // Hide loading state
-        loading.style.display = 'none';
-        
-        if (repos.length > 0) {
-          // Show repositories
-          displayRepos(repos);
-          // Select first repo by default
-          selectRepo(repos[0]);
-        } else {
-          // Show no repos message
-          repoGrid.innerHTML = `
-            <div class="empty-state">
-              <i class="fab fa-github"></i>
-              <h3>No repositories found</h3>
-              <p>We couldn't find any repositories for the username "${username}".</p>
-            </div>
-          `;
-        }
-      } catch (err) {
-        console.error('Error fetching GitHub repos:', err);
-        loading.style.display = 'none';
-        errorMessage.textContent = 'Failed to fetch repositories. Please check the username and try again.';
-        errorMessage.style.display = 'block';
-        emptyState.style.display = 'block';
-      }
-    }
-
-    function displayRepos(repos) {
-      repoGrid.innerHTML = '';
-      
-      repos.forEach(repo => {
-        const languageColor = getLanguageColor(repo.language);
-        const updatedDate = formatDate(repo.updated_at);
-        
-        const repoCard = document.createElement('div');
-        repoCard.className = 'repo-card';
-        repoCard.innerHTML = `
-          <div class="repo-header">
-            <div class="repo-title">
-              <div class="repo-name">
-                <i class="fab fa-github"></i>
-                ${repo.name}
-              </div>
-              ${repo.language ? `
-                <div class="repo-language">
-                  <span class="language-dot" style="background-color: ${languageColor};"></span>
-                  <span>${repo.language}</span>
-                </div>
-              ` : ''}
-            </div>
-            <div class="repo-description">
-              ${repo.description || 'No description provided'}
-            </div>
-          </div>
-          <div class="repo-content">
-            <div class="repo-stats">
-              <div class="repo-stat">
-                <i class="far fa-star"></i>
-                ${repo.stargazers_count}
-              </div>
-              <div class="repo-stat">
-                <i class="fas fa-code-branch"></i>
-                ${repo.forks_count}
-              </div>
-            </div>
-            <div class="repo-updated">
-              Updated ${updatedDate}
-            </div>
-          </div>
-          <div class="repo-footer">
-            <button class="btn btn-outline" style="width: 100%; color: var(--primary);">
-              <i class="fas fa-image"></i>
-              View Screenshot
-            </button>
-          </div>
-        `;
-        
-        repoCard.addEventListener('click', () => {
-          selectRepo(repo);
-        });
-        
-        repoGrid.appendChild(repoCard);
-      });
-    }
-
-    function selectRepo(repo) {
-      selectedRepo = repo;
-      
-      // Update all repo cards to remove active state
-      document.querySelectorAll('.repo-card').forEach(card => {
-        card.classList.remove('active');
-        if (card.querySelector('.repo-name').textContent.trim() === repo.name) {
-          card.classList.add('active');
-        }
-      });
-      
-      // Update screenshot
-      screenshotImg.src = repo.screenshot;
-      screenshotTitle.textContent = repo.name;
-      screenshotDesc.textContent = repo.description || 'No description provided';
-      repoScreenshot.style.display = 'block';
-    }
-
-    function getLanguageColor(language) {
-      const colors = {
-        JavaScript: '#f1e05a',
-        TypeScript: '#2b7489',
-        Python: '#3572A5',
-        Java: '#b07219',
-        HTML: '#e34c26',
-        CSS: '#563d7c',
-        'C#': '#178600',
-        PHP: '#4F5D95',
-        Ruby: '#701516',
-        Go: '#00ADD8',
-        Swift: '#ffac45',
-        Kotlin: '#F18E33'
-      };
-      
-      return colors[language] || '#8f8f8f';
-    }
-
-    function formatDate(dateString) {
-      const date = new Date(dateString);
-      return date.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric'
-      });
-    }
   </script>
 </body>
 </html>
